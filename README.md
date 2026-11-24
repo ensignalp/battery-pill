@@ -41,6 +41,7 @@ Charging always wins, so you get green with a bolt even in Power Saver. Low batt
 <img src="docs/prefs.png" alt="Settings window" width="420" align="right">
 
 - **Size**: body height from 10 to 22 px, keeping the same proportions at every size.
+- **Percentage size**: 60–130 % of the default. The digits shrink automatically if needed so they never spill out of the pill.
 - **Font**: SF Pro Text Bold 700 (default) or the system font. If SF Pro Text is not installed, it falls back to the system font automatically.
 - **Low battery threshold**: 5–30 %.
 - **Colors** for charging, low battery and power saver.

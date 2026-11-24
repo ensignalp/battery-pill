@@ -20,6 +20,11 @@
       <default>'default'</default>
       <summary>Percentage font: 'default' = SF Pro Text Bold 700, 'system' = panel font</summary>
     </key>
+    <key name="text-scale" type="i">
+      <range min="60" max="130"/>
+      <default>100</default>
+      <summary>Percentage text size (% of default); shrinks automatically to stay inside the pill</summary>
+    </key>
     <key name="hide-stock-indicator" type="b">
       <default>true</default>
       <summary>Hide the built-in panel battery icon</summary>

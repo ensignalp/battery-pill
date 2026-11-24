@@ -65,6 +65,7 @@ function buildPreview(settings) {
             paintBattery(lc, {
                 height: h, ds, fg, fillColor: toneColor(st.tone, colors, fg),
                 fillLevel: st.level, level: st.level, bolt: st.bolt, font,
+                textScale: settings.get_int('text-scale') / 100,
             });
             lc.$dispose();
 
@@ -115,6 +116,25 @@ export default class BatteryPillPrefs extends ExtensionPreferences {
         settings.bind('icon-height', scale.adjustment, 'value', Gio.SettingsBindFlags.DEFAULT);
         sizeRow.add_suffix(scale);
         look.add(sizeRow);
+
+        const textRow = new Adw.ActionRow({title: 'Yüzde boyutu', subtitle: 'Rakamların büyüklüğü (varsayılan %100)'});
+        const textScale = new Gtk.Scale({
+            orientation: Gtk.Orientation.HORIZONTAL,
+            adjustment: new Gtk.Adjustment({lower: 60, upper: 130, step_increment: 5, page_increment: 10}),
+            digits: 0,
+            draw_value: true,
+            value_pos: Gtk.PositionType.LEFT,
+            round_digits: 0,
+            hexpand: true,
+            width_request: 220,
+            valign: Gtk.Align.CENTER,
+        });
+        textScale.set_format_value_func((_s, v) => `%${Math.round(v)}`);
+        for (const v of [80, 100, 120])
+            textScale.add_mark(v, Gtk.PositionType.BOTTOM, null);
+        settings.bind('text-scale', textScale.adjustment, 'value', Gio.SettingsBindFlags.DEFAULT);
+        textRow.add_suffix(textScale);
+        look.add(textRow);
 
         const installed = hasFamily(DEFAULT_FAMILY);
         const fontRow = new Adw.ComboRow({

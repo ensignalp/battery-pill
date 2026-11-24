@@ -1,5 +1,5 @@
 // Renders every state at several sizes/scales into a PNG sheet for review.
-// Usage: gjs -m tools/render-preview.js [out.png] [default|system]
+// Usage: gjs -m tools/render-preview.js [out.png] [default|system] [text-scale %]
 import Cairo from 'cairo';
 import System from 'system';
 
@@ -8,7 +8,8 @@ import {layout, parseHex} from '../lib/geometry.js';
 
 const out = System.programArgs[0] ?? '/tmp/bp-preview.png';
 const font = resolveFont(System.programArgs[1] ?? 'default', 'Adwaita Sans');
-print(`font: ${font.family} ${font.weight}`);
+const textScale = Number(System.programArgs[2] ?? 100) / 100;
+print(`font: ${font.family} ${font.weight}, text ${textScale * 100}%`);
 const colors = {charging: parseHex('#10B981'), low: parseHex('#FF453A'), saver: parseHex('#FFD60A')};
 const states = [
     {tone: 'normal', level: 72, bolt: false},
@@ -39,7 +40,7 @@ rows.forEach(([height, s], ri) => {
         cr.scale(s, s);
         paintBattery(cr, {
             height, ds: s, fg, fillColor: toneColor(st.tone, colors, fg),
-            fillLevel: st.level, level: st.level, bolt: st.bolt, font,
+            fillLevel: st.level, level: st.level, bolt: st.bolt, font, textScale,
         });
         cr.$dispose();
         sc.setSourceSurface(layer, Math.round(ci * cellW * s + 6 * s), y + Math.round((rowH[ri] - h) / 2));

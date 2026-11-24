@@ -119,6 +119,7 @@ export default class BatteryPillExtension extends Extension {
         this._colors = colors;
         this._height = s.get_int('icon-height');
         this._font = s.get_string('font');
+        this._textScale = s.get_int('text-scale') / 100;
         this._lowThreshold = s.get_int('low-threshold');
     }
 
@@ -128,6 +129,6 @@ export default class BatteryPillExtension extends Extension {
         const battery = this._mock?.battery ?? this._power?.snapshot ?? null;
         const profile = this._mock?.profile ?? this._profile?.active ?? null;
         const state = resolve(battery, profile, {lowThreshold: this._lowThreshold});
-        this._indicator.setState(state, this._colors, this._height, this._font);
+        this._indicator.setState(state, this._colors, this._height, this._font, this._textScale);
     }
 }
