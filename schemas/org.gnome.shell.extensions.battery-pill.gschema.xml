@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.battery-pill"
+          path="/org/gnome/shell/extensions/battery-pill/">
+    <key name="low-threshold" type="i">
+      <range min="5" max="30"/>
+      <default>15</default>
+      <summary>Low battery threshold (%)</summary>
+    </key>
+    <key name="icon-height" type="i">
+      <range min="10" max="22"/>
+      <default>14</default>
+      <summary>Battery body height in logical pixels</summary>
+    </key>
+    <key name="font" type="s">
+      <choices>
+        <choice value="default"/>
+        <choice value="system"/>
+      </choices>
+      <default>'default'</default>
+      <summary>Percentage font: 'default' = SF Pro Text Bold 700, 'system' = panel font</summary>
+    </key>
+    <key name="hide-stock-indicator" type="b">
+      <default>true</default>
+      <summary>Hide the built-in panel battery icon</summary>
+    </key>
+    <key name="color-charging" type="s">
+      <default>'#10B981'</default>
+      <summary>Charging color (emerald)</summary>
+    </key>
+    <key name="color-low" type="s">
+      <default>'#FF453A'</default>
+      <summary>Low battery color</summary>
+    </key>
+    <key name="color-saver" type="s">
+      <default>'#FFD60A'</default>
+      <summary>Power saver color</summary>
+    </key>
+    <key name="mock-file" type="s">
+      <default>''</default>
+      <summary>Debug: JSON file overriding battery/profile state (empty = off)</summary>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,10 @@
+{
+  "uuid": "battery-pill@ensignalp",
+  "name": "Battery Pill",
+  "description": "A crisp, phone-style battery pill for the top bar, with the percentage inside.\n\nEmerald with a bolt while charging, red at low battery, yellow in power saver and white otherwise. Vector-drawn, so it stays sharp at any scale. Event-driven through UPower and power-profiles-daemon, with no polling. Replaces the built-in battery icon cleanly and restores it when disabled.",
+  "url": "https://github.com/ensignalp/battery-pill",
+  "shell-version": ["49", "50", "51"],
+  "session-modes": ["user", "unlock-dialog"],
+  "settings-schema": "org.gnome.shell.extensions.battery-pill",
+  "version": 1
+}

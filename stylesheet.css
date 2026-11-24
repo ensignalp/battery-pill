@@ -1,0 +1,4 @@
+/* Spacing only; state colors come from GSettings and are painted with Cairo. */
+.bp-indicator {
+  padding: 0 1px;
+}

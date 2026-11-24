@@ -1,0 +1,6 @@
+{
+  "uuid": "shot-helper@battery-pill",
+  "name": "battery-pill shot helper (test only)",
+  "description": "Headless screenshot helper",
+  "shell-version": ["49", "50", "51"]
+}
